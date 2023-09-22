@@ -4,12 +4,12 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:file_picker/file_picker.dart';
 import 'dart:typed_data';
+import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 //import 'package:googleapis/aiplatform/v1.dart';
 
 const token =
-    "ya29.c.b0Aaekm1LbQ7YgHbNOeOk9xslHOiyiSmVKWUK8FsmLVD1VMH3JiB6wCwkgNvY87jMq2nC7TYbOhN4s5nNSw1T9xgJ6G5qnWeSjco99BhQ1HbdN1PYFFemKl-MllMzLpd8vvE2PXIPSY2ty7AO0faz95vSxb1XRy5L8N-pHsusFfOKQ_R3sqLE-wu7afCddt7f0LVbsfbQCVukEokDH4r_hYtFYSVW6plwU1SZbz0zjgp7XhdGt4Tj02_c74NK8waXAaaiwqiapxCgtRb-nhTkANJSc9renmhTmED4kc_T5FUb5byNuy_zMigDIXbVeYYg_cwu8-KI3Q-X9bIVWESDju2YopIyGlxh8eZv6wmDR1mYaHKT4vf83Pj3z0lUY-PHqu0sPyr-H5KPZTOBkuVl9f5pXMR1Nm4W-p8_VDlZSksCqQog-dSqfWXkzUimjZQTN_1wVhpp1mEZaXGFDWCVJh6yMDVE7U8v7j5bR1-OU3nLgMBYK1aLibXuPPhOlBec72tuH2GQKvvOOHfPmSrSwCFV9afaCMhvjsJwbhG2vNai0SNUu7-Y0kMtlI0W8j2nWZH0C7Sxy6RNeIQRHtAO_6zHmT53xrTBTIeNiBtzWG625AJW9rMqZ_9uiFeFj1RsU9ir4Ig-ZI4nqWJ-3gQy78yqke_krMvWt0_v4zZRw6J88eWM7Jh9rWrmlIJvRjl_Bg-a3Sxzh1If561etiwer93v7ZoZhM_M4oihqZl2Onxjndyy1j4Rg-FuJqgaJipOWW-SJrQcIl6qXmQg9nkfYdoSXVdkqoV3UOFf_boZ7kncv2bcy_lzfB7VfU-tiluRxUlQwqBhwdWRvi7wwZmJ7uWFVv15aUi7csQuwz5lnJrqtjq-cuqkrgUxv8FQ_ZcjhBBmcZrUe5i_lO0BvW__luxw3sQqf9f_zJtwylXu-ooBZiq1wYq3ageqnkoozk1r1Rm1tIueBMkwX_hp0uxvlucbuFasUmosiMVSJ56Zwhm-46J9Z3p2dlF2";
-
+    "ya29.c.b0Aaekm1KLQpG4IIsHZJer8QVkulhxIGnkt6pX_Gp8MVMJkOUs1dNZTvDsqxUL1NlsdqxuduD2Jl_gcRX7nE99hFhjdgZKkTS7mziV1a7iqYSj1V9T5JXs5PniZZwXyclAxBZ4VTRirZU-g92f6Zcz_yjUqkbrtjg6a9uOrK7oLbdImqev1z8F_fr-6VVdEVxEc_X-vzKppC2_2BCSEVDOrRqHncvn_xNdOLv0FW4kjg8kWtxFhxHbfdb2OGNfqRugsSGiGhBptPvLcP1-oDd6MVL7lnIMdvS4vMKPBhFPj0Qi0HKrxw6x1tz6Hah3q7B0bYRdNdkRRypEc4Gn5ajVHnNM6-fEQP0JbkcEpSf5Q5O7byZmZ74nGavhE-WMapNcHivdzhSEuVcRyK-JXvD6JmHJO8o3C2qny6lMpqX5m_ymmExFEVWJf3bs2KSSEe8xjvq0ZU6anF76TfIlQxtiFFJPoyKp6RSO2Tord2i0AgQZj15fDFcg_maBmjWcLEO53NKuWk_Zhjo_rjm9HajjLtuhD-z3dye9IeNubQDT1ePY0PQCGIM64QhjrzjoHTXgjf8pqU2sRWwUyMQobVdSoEKG2zxg0KLmQvNxlvtiL625DYg29-sFa6Yrg51RhZ6k8_f86mhXcnd6iZ6OmX2j1W2iZMee6oQ9YXkQOirY4Fl_io6UUYkm0BSdmcSq7Vx-eyUU5B4WJb2Z5l5fktYWZ4V8xvsvdR5czcZsni3c-Vwihyi4e8rOOX0Mbymp3IrYUJcuhi-wMsabXd0m9y3-SxVvVRxbB3ZtlVQB4ukWIx7ZahiWIfiu2RJbxo8y4SUZkkRk8lt_0-_y4ZmxoeahyIdMmaMyoaa-te8ghJ10Zre_yzywaX2gI_gzyOtnFl18Ykbt2SRaite7i3g4Xyd3S0-iBjZqk437WR-RMt0ZVMlt6IWX_UhYZ5tno5Y62aSM_kd315kU1Q2j8rWJ4Z5k7bnMWxvMilIFtiB4rXQwSz1FUY9k2rak-f2";
 Future<String> GetNonbinary(String binaryText) async {
   print("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
   final headers = {
@@ -255,6 +255,19 @@ class _PdfUploadButtonState extends State<PdfUploadButton> {
     if (result != null) {
       setState(() {
         _pdfBytes = result.files.single.bytes; // Store PDF data
+        print(result.files.single.name);
+
+        //Load an existing PDF document.
+        PdfDocument document = PdfDocument(inputBytes: _pdfBytes);
+
+//Create a new instance of the PdfTextExtractor.
+        PdfTextExtractor extractor = PdfTextExtractor(document);
+
+//Extract all the text from the document.
+        String text = extractor.extractText();
+
+//Display the text.
+        print(text);
       });
     }
   }
